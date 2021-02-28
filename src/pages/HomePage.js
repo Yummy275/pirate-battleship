@@ -16,7 +16,7 @@ const HomePage = () => {
                 <StdButton string="Play vs Cpu"></StdButton>
                 <StdButton string="Play vs Human"></StdButton>
             </div>
-            <img className="h-full" src={water} alt="water"></img>
+            <img src={water} alt="water"></img>
         </div>
     );
 };
