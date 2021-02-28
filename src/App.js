@@ -4,12 +4,8 @@ import pirateshipImg from './images/home-pirateship.png';
 function App() {
     return (
         <div className="App">
-            <div className="text-xl">PIRATESHIPS</div>
-            <img
-                className="h-12 w-12"
-                src={pirateshipImg}
-                alt="pirateship"
-            ></img>
+            <div className="">PIRATESHIPS</div>
+            <img className="w-2/3" src={pirateshipImg} alt="pirateship"></img>
         </div>
     );
 }
