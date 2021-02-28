@@ -1,11 +1,9 @@
 import './App.css';
-import pirateshipImg from './images/home-pirateship.png';
-
+import HomePage from './pages/HomePage';
 function App() {
     return (
         <div className="App">
-            <div className="">PIRATESHIPS</div>
-            <img className="w-2/3" src={pirateshipImg} alt="pirateship"></img>
+            <HomePage></HomePage>
         </div>
     );
 }
