@@ -6,7 +6,9 @@ import water from '../images/home-water.png';
 const HomePage = () => {
     return (
         <div className="min-h-screen flex flex-col items-center">
-            <div className="text-4xl text-red-700 pt-2">PIRATESHIPS</div>
+            <div className="h-64 w-72 text-3xl text-red-700 pt-2 bg-home-scroll bg-contain">
+                PIRATESHIPS
+            </div>
             <img
                 className="w-4/5 h-52 mt-4"
                 src={pirateshipImg}
