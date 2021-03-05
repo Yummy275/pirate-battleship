@@ -33,6 +33,7 @@ const HomePage = () => {
                 </div>
             </div>
             <img
+                style={{ maxHeight: '7rem' }}
                 className="fixed bottom-0 w-full h-1/5"
                 src={water}
                 alt="water"
