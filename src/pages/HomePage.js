@@ -1,22 +1,35 @@
 import React from 'react';
 import StdButton from '../components/StdButton';
-import pirateshipImg from '../images/home-pirateship.png';
+import pirateSkullImg from '../images/skull.png';
+import scrollImg from '../images/home-scroll.png';
 import water from '../images/home-water.png';
 
 const HomePage = () => {
     return (
         <div className="min-h-screen flex flex-col items-center">
-            <div className="h-64 w-72 text-3xl text-red-700 pt-2 bg-home-scroll bg-contain">
-                PIRATESHIPS
+            <div
+                style={{ maxWidth: '40rem' }}
+                className="w-full flex items-center justify-center relative"
+            >
+                <img
+                    alt="scroll"
+                    src={scrollImg}
+                    className="h-40 md:h-64 w-full"
+                ></img>
+                <div className="absolute text-2xl md:text-4xl text-red-700">
+                    PIRATESHIPS
+                </div>
             </div>
-            <img
-                className="w-4/5 h-52 mt-4"
-                src={pirateshipImg}
-                alt="pirateship"
-            ></img>
-            <div className="mt-5 flex flex-wrap justify-center">
-                <StdButton string="Play vs Cpu"></StdButton>
-                <StdButton string="Play vs Human"></StdButton>
+            <div className="w-full flex items-center justify-center relative">
+                <img
+                    style={{ maxWidth: '30rem' }}
+                    className="w-full"
+                    src={pirateSkullImg}
+                ></img>
+                <div className="absolute flex flex-wrap justify-center items-center">
+                    <StdButton string="Play vs Cpu"></StdButton>
+                    <StdButton string="Play vs Human"></StdButton>
+                </div>
             </div>
             <img src={water} alt="water"></img>
         </div>
