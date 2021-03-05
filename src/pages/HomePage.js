@@ -22,6 +22,7 @@ const HomePage = () => {
             </div>
             <div className="w-full flex items-center justify-center relative">
                 <img
+                    alt="skull"
                     style={{ maxWidth: '30rem' }}
                     className="w-full"
                     src={pirateSkullImg}
@@ -31,7 +32,11 @@ const HomePage = () => {
                     <StdButton string="Play vs Human"></StdButton>
                 </div>
             </div>
-            <img src={water} alt="water"></img>
+            <img
+                className="fixed bottom-0 w-full h-1/5"
+                src={water}
+                alt="water"
+            ></img>
         </div>
     );
 };
