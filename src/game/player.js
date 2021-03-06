@@ -31,16 +31,35 @@ const playerFactory = () => {
         for (const bodyPart of ship.body) {
             if (JSON.stringify(bodyPart.cord) === JSON.stringify(cord)) {
                 bodyPart.hitMarker = true;
+                break;
             }
         }
     };
 
+    const shipsDeadCheck = () => {
+        let theyAllDead = true;
+        for (var i = 0; i < ships.length; i++) {
+            if (ships[i].checkForDeath() === false) {
+                theyAllDead = false;
+                break;
+            }
+        }
+        return theyAllDead;
+    };
+
     const attackBoard = (targetBoard, cord) => {
         targetBoard.recieveAttack(cord);
+        //marks ship in ships as hit if located at target cord
         shipHitCheck(ships['carrier'], cord);
     };
 
-    const player = { board: board, ships: ships, placeMyShip, attackBoard };
+    const player = {
+        board: board,
+        ships: ships,
+        placeMyShip,
+        attackBoard,
+        shipsDeadCheck,
+    };
 
     return player;
 };

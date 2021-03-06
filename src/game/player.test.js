@@ -31,7 +31,7 @@ test('player placing on their board', () => {
     }).toThrow();
 });
 
-test('player ships body marking true', () => {
+test('player ships body hitmarker marking true when hit', () => {
     testPlayer.placeMyShip(testPlayer.ships['carrier'], [1, 1], 'X');
     testPlayer.attackBoard(testPlayer.board, [1, 1]);
     expect(testPlayer.board.boardState[0][0]).toEqual('H');

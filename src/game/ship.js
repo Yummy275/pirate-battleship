@@ -6,7 +6,18 @@ const shipFactory = (name, length) => {
         body.push({ hitMarker: false, cord: '' });
     }
 
-    const shipInfo = { name: name, body: body };
+    const checkForDeath = () => {
+        let isDead = true;
+        for (const bodyPart of body) {
+            if (bodyPart.hitMarker === false) {
+                isDead = false;
+                break;
+            }
+        }
+        return isDead;
+    };
+
+    const shipInfo = { name: name, body: body, checkForDeath };
 
     return shipInfo;
 };
