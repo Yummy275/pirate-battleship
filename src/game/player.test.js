@@ -6,6 +6,7 @@ beforeEach(() => {
 });
 
 test('player creation', () => {
+    expect(testPlayer).toHaveProperty('name');
     expect(testPlayer).toHaveProperty('board');
     expect(testPlayer).toHaveProperty('ships');
 });

@@ -1,7 +1,7 @@
 import boardFactory from './board';
 import shipFactory from './ship';
 
-const playerFactory = () => {
+const playerFactory = (name) => {
     const board = boardFactory();
 
     const carrier = shipFactory('Carrier', 5);
@@ -54,6 +54,7 @@ const playerFactory = () => {
     };
 
     const player = {
+        name: name,
         board: board,
         ships: ships,
         placeMyShip,

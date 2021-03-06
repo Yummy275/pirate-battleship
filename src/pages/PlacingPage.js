@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BoardGrid from '../components/BoardGrid';
+import StdButton from '../components/StdButton';
 import skull from '../images/skull.png';
 import scroll from '../images/home-scroll.png';
 
-const PlacingPage = () => {
+const PlacingPage = ({ player }) => {
+    const [placingShip, setPlacingShip] = useState(player.ships[0]);
+    const [axis, setAxis] = useState('X');
+
+    const gridSpotClick = (cord) => {
+        //try {
+        //    player.placeMyShip(placingShip, cord, );
+        // }
+        console.log(cord);
+    };
+
+    const xAxisHandleClick = () => {
+        setAxis('X');
+    };
+
+    const yAxisHandleClick = () => {
+        setAxis('Y');
+    };
+
     return (
         <div
             className="h-screen bg-center"
@@ -20,7 +39,21 @@ const PlacingPage = () => {
                 style={{ backgroundSize: '12.5% 12.5%', opacity: '.8' }}
                 className="h-4/6 w-5/6 mt-3 mx-auto bg-water-tile my-grid-border"
             >
-                <BoardGrid></BoardGrid>
+                <BoardGrid gridSpotClick={gridSpotClick}></BoardGrid>
+            </div>
+            <div className="flex justify-evenly text-red-700">
+                <StdButton
+                    textSize={`${axis === 'X' ? 'text-4xl' : 'text-xl'}`}
+                    string="X"
+                    handleClick={xAxisHandleClick}
+                ></StdButton>
+                <StdButton
+                    string="Y"
+                    textSize={`${axis === 'Y' ? 'text-4xl' : 'text-xl'}`}
+                    handleClick={yAxisHandleClick}
+                >
+                    Y
+                </StdButton>
             </div>
             <div className="relative flex justify-center items-center">
                 <img

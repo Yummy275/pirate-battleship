@@ -28,8 +28,14 @@ const HomePage = () => {
                     src={pirateSkullImg}
                 ></img>
                 <div className="absolute flex flex-wrap justify-center items-center">
-                    <StdButton string="Play vs Cpu"></StdButton>
-                    <StdButton string="Play vs Human"></StdButton>
+                    <StdButton
+                        string="Play vs Cpu"
+                        textSize="text-xl"
+                    ></StdButton>
+                    <StdButton
+                        string="Play vs Human"
+                        textSize="text-xl"
+                    ></StdButton>
                 </div>
             </div>
             <img
