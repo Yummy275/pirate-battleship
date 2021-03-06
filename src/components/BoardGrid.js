@@ -14,7 +14,7 @@ const BoardGrid = () => {
                         height: '100%',
                         width: '12.5%',
                     }}
-                    className="my-grid-border hover:bg-grid-hover-bgc"
+                    className="my-grid-border transition-colors hover:bg-grid-hover-bgc"
                 ></div>
             );
             row.push(col);

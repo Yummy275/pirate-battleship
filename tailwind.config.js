@@ -4,7 +4,7 @@ module.exports = {
     theme: {
         extend: {
             backgroundColor: (theme) => ({
-                'grid-hover-bgc': 'rgba(250, 250, 250, 0.5)',
+                'grid-hover-bgc': 'rgba(250, 250, 250, 0.7)',
             }),
             backgroundImage: (theme) => ({
                 'water-tile': "url('/src/images/board-grid-water.png')",
