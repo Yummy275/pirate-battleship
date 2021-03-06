@@ -31,3 +31,17 @@ test('placing ship on board', () => {
     expect(board.boardState[1][3]).toEqual('O');
     expect(board.boardState[1][4]).toEqual('W');
 });
+
+test('throwing error for trying to illegally place ship', () => {
+    board.placeShip(3, [1, 1], 'X');
+    expect(() => {
+        board.placeShip(3, [1, 1], 'Y');
+    }).toThrow();
+    expect(() => {
+        board.placeShip(3, [1, 2], 'X');
+    }).toThrowError();
+
+    //check to make sure spot wasnt marked illegally
+    expect(board.boardState[1][0]).toEqual('W');
+    expect(board.boardState[0][3]).toEqual('W');
+});
