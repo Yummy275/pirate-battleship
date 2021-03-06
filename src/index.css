@@ -7,3 +7,17 @@ body {
     font-family: 'Yusei Magic', sans-serif;
     background-color: #f2f3f4;
 }
+
+@media (min-width: 768px) {
+    html,
+    body {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    html,
+    body {
+        font-size: 1.4rem;
+    }
+}
