@@ -20,6 +20,6 @@ test('player placing on their board', () => {
 
     //throw error
     expect(() => {
-        testPlayer.placeMyShip(testPlayer.ships[('battleship', [1, 3], 'X')]);
+        testPlayer.placeMyShip(testPlayer.ships['battleship'], [1, 3], 'X');
     }).toThrow();
 });
