@@ -44,7 +44,7 @@ const boardFactory = () => {
 
         for (var i = 0; i < shipLength; i++) {
             boardState[adjCordOne][adjCordTwo] = 'O';
-            axis = 'X' ? adjCordTwo++ : adjCordOne++;
+            axis === 'X' ? adjCordTwo++ : adjCordOne++;
         }
     };
 

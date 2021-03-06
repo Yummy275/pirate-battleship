@@ -19,11 +19,12 @@ const playerFactory = (name) => {
     };
 
     const placeMyShip = (ship, cord, axis) => {
+        console.log(axis);
         board.placeShip(ship.body.length, cord, axis);
         let [cordOne, cordTwo] = [...cord];
         for (const spot of ship.body) {
             spot.cord = [cordOne, cordTwo];
-            axis = 'X' ? cordTwo++ : cordOne++;
+            axis === 'X' ? cordTwo++ : cordOne++;
         }
     };
 

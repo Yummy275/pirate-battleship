@@ -5,14 +5,17 @@ import skull from '../images/skull.png';
 import scroll from '../images/home-scroll.png';
 
 const PlacingPage = ({ player }) => {
-    const [placingShip, setPlacingShip] = useState(player.ships[0]);
+    const [placingShip, setPlacingShip] = useState(player.ships['carrier']);
     const [axis, setAxis] = useState('X');
 
     const gridSpotClick = (cord) => {
-        //try {
-        //    player.placeMyShip(placingShip, cord, );
-        // }
-        console.log(cord);
+        try {
+            player.placeMyShip(placingShip, cord, axis);
+        } catch (err) {
+            alert(err);
+        }
+        console.log(axis);
+        console.log(player.board.boardState);
     };
 
     const xAxisHandleClick = () => {
