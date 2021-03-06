@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BoardGrid = ({ gridSpotClick }) => {
+const BoardGrid = ({ boardState, gridSpotClick }) => {
     const grid = [];
 
     for (var i = 1; i <= 8; i++) {
@@ -18,7 +18,15 @@ const BoardGrid = ({ gridSpotClick }) => {
                     onClick={() => {
                         gridSpotClick(cord);
                     }}
-                    className="my-grid-border transition-colors hover:bg-grid-hover-bgc"
+                    className={`my-grid-border transition-colors hover:bg-grid-hover-bgc ${
+                        boardState[i - 1][j - 1] === 'O'
+                            ? 'bg-grid-occ'
+                            : boardState[i - 1][j - 1] === 'H'
+                            ? 'bg-grid-hit'
+                            : boardState[i - 1][j - 1] === 'M'
+                            ? 'bg-grid-miss'
+                            : ''
+                    }`}
                 ></div>
             );
             row.push(col);

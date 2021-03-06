@@ -60,7 +60,10 @@ const PlacingPage = ({ player }) => {
                 style={{ backgroundSize: '12.5% 12.5%', opacity: '.8' }}
                 className="h-4/6 w-5/6 mt-3 mx-auto bg-water-tile my-grid-border"
             >
-                <BoardGrid gridSpotClick={gridSpotClick}></BoardGrid>
+                <BoardGrid
+                    boardState={player.board.boardState}
+                    gridSpotClick={gridSpotClick}
+                ></BoardGrid>
             </div>
             <div className="flex justify-evenly text-red-700">
                 <StdButton
