@@ -23,3 +23,10 @@ test('player placing on their board', () => {
         testPlayer.placeMyShip(testPlayer.ships['battleship'], [1, 3], 'X');
     }).toThrow();
 });
+
+test('player ships body marking true', () => {
+    testPlayer.placeMyShip(testPlayer.ships['carrier'], [1, 1], 'X');
+    testPlayer.board.recieveAttack([1, 1]);
+    expect(testPlayer.board.boardState[0][0]).toEqual('H');
+    expect(testPlayer.ships['carrier'].body[0]).toEqual(true);
+});
