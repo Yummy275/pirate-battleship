@@ -9,8 +9,12 @@ const BoardGrid = () => {
             const col = (
                 <div
                     key={`[${(i, j)}]`}
-                    style={{ height: '100%', width: '12.5%' }}
-                    className="bg-opacity-0	my-grid-border"
+                    style={{
+                        cursor: 'pointer',
+                        height: '100%',
+                        width: '12.5%',
+                    }}
+                    className="my-grid-border hover:bg-grid-hover-bgc"
                 ></div>
             );
             row.push(col);
