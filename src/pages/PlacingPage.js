@@ -8,14 +8,32 @@ const PlacingPage = ({ player }) => {
     const [placingShip, setPlacingShip] = useState(player.ships['carrier']);
     const [axis, setAxis] = useState('X');
 
+    const updatePlacingShip = () => {
+        if (placingShip.name === 'Carrier') {
+            setPlacingShip(player.ships['battleship']);
+        } else if (placingShip.name === 'Battleship') {
+            setPlacingShip(player.ships['cruiser']);
+        } else if (placingShip.name === 'Cruiser') {
+            setPlacingShip(player.ships['submarine']);
+        } else if (placingShip.name === 'Submarine') {
+            setPlacingShip(player.ships['destroyer']);
+        } else if (placingShip.name === 'Destroyer') {
+            console.log('TODO: make next step button appear');
+        }
+    };
+
     const gridSpotClick = (cord) => {
         try {
             player.placeMyShip(placingShip, cord, axis);
         } catch (err) {
             alert(err);
+            console.log(player.board.boardState);
+            console.log(player.ships);
+            return;
         }
-        console.log(axis);
+        updatePlacingShip();
         console.log(player.board.boardState);
+        console.log(player.ships);
     };
 
     const xAxisHandleClick = () => {

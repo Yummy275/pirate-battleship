@@ -17,17 +17,18 @@ const boardFactory = () => {
 
     //ship placement checker
     const checkPlacement = (shipLength, cordOne, cordTwo, axis) => {
-        if (shipLength + cordOne > 8 || shipLength + cordTwo > 8) {
-            throw new Error('Not enough room for ship to be placed here.');
-        }
-
         for (var i = 0; i < shipLength; i++) {
-            if (boardState[cordOne][cordTwo] === 'O') {
+            if (
+                (axis === 'Y' && cordOne > 7) ||
+                (axis === 'X' && cordTwo > 7)
+            ) {
+                throw new Error('Not enough room for ship to be placed here.');
+            } else if (boardState[cordOne][cordTwo] === 'O') {
                 throw new Error(
                     "Can't place ship here, collides with another."
                 );
             }
-            axis = 'X' ? cordTwo++ : cordOne++;
+            axis === 'X' ? cordTwo++ : cordOne++;
         }
     };
 
