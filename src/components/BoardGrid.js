@@ -10,7 +10,7 @@ const BoardGrid = () => {
                 <div
                     key={`[${(i, j)}]`}
                     style={{ height: '100%', width: '12.5%' }}
-                    className="bg-green-400"
+                    className="bg-opacity-0	my-grid-border"
                 ></div>
             );
             row.push(col);
