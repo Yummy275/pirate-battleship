@@ -3,7 +3,7 @@ const shipFactory = (name, length) => {
     let body = [];
 
     for (var i = 0; i < length; i++) {
-        body.push({ hitMarker: false, cords: [] });
+        body.push({ hitMarker: false, cord: '' });
     }
 
     const shipInfo = { name: name, body: body };

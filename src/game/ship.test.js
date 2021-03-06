@@ -5,6 +5,6 @@ test('ship creation', () => {
     expect(testShip.name).toEqual('Cruiser');
     for (const spot of testShip.body) {
         expect(spot.hitMarker).toEqual(false);
-        expect(spot.cords).toEqual([]);
+        expect(spot.cord).toEqual('');
     }
 });
