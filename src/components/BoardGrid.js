@@ -18,7 +18,11 @@ const BoardGrid = ({ boardState, gridSpotClick }) => {
                     onClick={() => {
                         gridSpotClick(cord);
                     }}
-                    className={`my-grid-border transition-colors hover:bg-grid-hover-bgc ${
+                    className={`my-grid-border transition-colors ${
+                        boardState[i - 1][j - 1] === 'O'
+                            ? ''
+                            : 'hover:bg-grid-hover-bgc'
+                    } ${
                         boardState[i - 1][j - 1] === 'O'
                             ? 'bg-grid-occ'
                             : boardState[i - 1][j - 1] === 'H'
