@@ -45,3 +45,21 @@ test('throwing error for trying to illegally place ship', () => {
     expect(board.boardState[1][0]).toEqual('W');
     expect(board.boardState[0][3]).toEqual('W');
 });
+
+test('board correctly recieves attack', () => {
+    board.placeShip(3, [1, 1], 'X');
+    //hit
+    board.recieveAttack([1, 1]);
+    expect(board.boardState[0][0]).toEqual('H');
+    //miss
+    board.recieveAttack([2, 1]);
+    expect(board.boardState[1][0]).toEqual('M');
+
+    //illegal attacks, test on 'H' and 'M'
+    expect(() => {
+        board.recieveAttack([1, 1]);
+    }).toThrow();
+    expect(() => {
+        board.recieveAttack([2, 1]);
+    }).toThrow();
+});
