@@ -18,8 +18,7 @@ test('player placing on their board', () => {
     expect(testPlayer.board.boardState[0][3]).toEqual('O');
     expect(testPlayer.board.boardState[0][4]).toEqual('O');
 
-    //test to make sure ships body cords match
-    console.log(testPlayer.ships['carrier'].body);
+    //test to make sure ships body spots cord match
     expect(testPlayer.ships['carrier'].body[0].cord).toEqual([1, 1]);
     expect(testPlayer.ships['carrier'].body[1].cord).toEqual([1, 2]);
     expect(testPlayer.ships['carrier'].body[2].cord).toEqual([1, 3]);
@@ -34,7 +33,7 @@ test('player placing on their board', () => {
 
 test('player ships body marking true', () => {
     testPlayer.placeMyShip(testPlayer.ships['carrier'], [1, 1], 'X');
-    testPlayer.board.recieveAttack([1, 1]);
+    testPlayer.attackBoard(testPlayer.board, [1, 1]);
     expect(testPlayer.board.boardState[0][0]).toEqual('H');
     expect(testPlayer.ships['carrier'].body[0].hitMarker).toEqual(true);
 });

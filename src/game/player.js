@@ -27,17 +27,17 @@ const playerFactory = () => {
         }
     };
 
-    const shipHitCheck = (cord) => {
-        for (var i = 0; i < ships.length; i++) {
-            if (ships[i].body.cords.includes(cord)) {
-                ships[i].body.hitMarker = true;
+    const shipHitCheck = (ship, cord) => {
+        for (const bodyPart of ship.body) {
+            if (JSON.stringify(bodyPart.cord) === JSON.stringify(cord)) {
+                bodyPart.hitMarker = true;
             }
         }
     };
 
     const attackBoard = (targetBoard, cord) => {
         targetBoard.recieveAttack(cord);
-        shipHitCheck(cord);
+        shipHitCheck(ships['carrier'], cord);
     };
 
     const player = { board: board, ships: ships, placeMyShip, attackBoard };
