@@ -11,11 +11,7 @@ const HomePage = () => {
                 style={{ maxWidth: '40rem' }}
                 className="w-full flex items-center justify-center relative"
             >
-                <img
-                    alt="scroll"
-                    src={scrollImg}
-                    className="h-40 md:h-64 w-full"
-                ></img>
+                <img alt="scroll" src={scrollImg} className="h-40 w-full"></img>
                 <div className="absolute text-2xl md:text-4xl text-red-700">
                     PIRATESHIPS
                 </div>
@@ -28,18 +24,12 @@ const HomePage = () => {
                     src={pirateSkullImg}
                 ></img>
                 <div className="absolute flex flex-wrap justify-center items-center">
-                    <StdButton
-                        string="Play vs Cpu"
-                        textSize="text-xl"
-                    ></StdButton>
-                    <StdButton
-                        string="Play vs Human"
-                        textSize="text-xl"
-                    ></StdButton>
+                    <StdButton string="1 Player" textSize="text-xl"></StdButton>
+                    <StdButton string="2 Player" textSize="text-xl"></StdButton>
                 </div>
             </div>
             <img
-                style={{ maxHeight: '7rem' }}
+                style={{ maxHeight: '5rem' }}
                 className="fixed bottom-0 w-full h-1/5"
                 src={water}
                 alt="water"
