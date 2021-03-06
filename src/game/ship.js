@@ -1,8 +1,6 @@
 const shipFactory = (name, length) => {
-    //body is an array of booleans
-    //true if it has been hit or false if not
-    //length of arr is the ship length
-    const body = [];
+    //arr representing body of ship
+    let body = [];
 
     for (var i = 0; i < length; i++) {
         body.push(false);
