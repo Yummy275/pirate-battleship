@@ -71,8 +71,10 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
         console.log(vsCpu);
         if (player.name === 'Player One' && vsCpu === true) {
             setViewPage('playing');
+        } else if (player.name === 'Player Two') {
+            setViewPage('playing');
         } else {
-            setViewPage('placeTwo');
+            setViewPage('placingTwo');
             setPlacingShip(player.ships['carrier']);
         }
     };
@@ -86,8 +88,8 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
                 backgroundSize: '20%',
             }}
         >
-            <div className="text-center text-3xl pb-1 bg-red-700">
-                Place Ships
+            <div className="text-center text-red-700 text-3xl pb-1 bg-gray-300 bg-opacity-90">
+                {player.name} Ships
             </div>
             <div
                 style={{ backgroundSize: '12.5% 12.5%', opacity: '.8' }}
