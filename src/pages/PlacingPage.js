@@ -4,7 +4,7 @@ import StdButton from '../components/StdButton';
 import skull from '../images/skull.png';
 import scroll from '../images/home-scroll.png';
 
-const PlacingPage = ({ player, setViewPage, vsCpu = '' }) => {
+const PlacingPage = ({ player, setViewPage, vsCpu }) => {
     const [placingShip, setPlacingShip] = useState(player.ships['carrier']);
     const [axis, setAxis] = useState('X');
 
@@ -68,11 +68,12 @@ const PlacingPage = ({ player, setViewPage, vsCpu = '' }) => {
 
     const donePlacing = () => {
         resetStrikeOutText();
-        if (player.name !== 'CPU') {
-            setViewPage('placingTwo');
-            setPlacingShip(player.ships['carrier']);
-        } else {
+        console.log(vsCpu);
+        if (player.name === 'Player One' && vsCpu === true) {
             setViewPage('playing');
+        } else {
+            setViewPage('placeTwo');
+            setPlacingShip(player.ships['carrier']);
         }
     };
 

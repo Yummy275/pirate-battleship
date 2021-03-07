@@ -11,8 +11,8 @@ function App() {
     const [players, setPlayers] = useState([]);
 
     const placingStart = () => {
-        const playerOne = playerFactory('Human');
-        const playerTwo = playerFactory('CPU');
+        const playerOne = playerFactory('Player One');
+        const playerTwo = playerFactory('Player Two');
         const playersObj = { playerOne: playerOne, playerTwo: playerTwo };
         setPlayers(playersObj);
         setViewPage('placing');
@@ -24,6 +24,7 @@ function App() {
                 <PlacingPage
                     player={players['playerOne']}
                     setViewPage={setViewPage}
+                    vsCpu={vsCpu}
                 ></PlacingPage>
             ) : viewPage === 'placingTwo' ? (
                 <PlacingPage
@@ -32,7 +33,7 @@ function App() {
                     vsCpu={vsCpu}
                 ></PlacingPage>
             ) : viewPage === 'playing' ? (
-                <PlayingPage></PlayingPage>
+                <PlayingPage players={players} vsCpu={vsCpu}></PlayingPage>
             ) : (
                 <HomePage
                     placingStart={placingStart}
