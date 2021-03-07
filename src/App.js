@@ -31,7 +31,7 @@ function App() {
                     setViewPage={setViewPage}
                     vsCpu={vsCpu}
                 ></PlacingPage>
-            ) : viewPage === 'playingPage' ? (
+            ) : viewPage === 'playing' ? (
                 <PlayingPage></PlayingPage>
             ) : (
                 <HomePage
