@@ -22,6 +22,15 @@ const PlacingPage = ({ player, setViewPage, vsCpu = '' }) => {
         ele.current.style.textDecoration = 'line-through';
     };
 
+    //resets all the words to not be striked out
+    const resetStrikeOutText = () => {
+        shipNameOne.current.style.textDecoration = 'none';
+        shipNameTwo.current.style.textDecoration = 'none';
+        shipNameThr.current.style.textDecoration = 'none';
+        shipNameFour.current.style.textDecoration = 'none';
+        shipNameFive.current.style.textDecoration = 'none';
+    };
+
     const updatePlacingShip = () => {
         if (placingShip.name === 'Carrier') {
             strikeOutText(shipNameOne);
@@ -60,6 +69,7 @@ const PlacingPage = ({ player, setViewPage, vsCpu = '' }) => {
     };
 
     const donePlacing = () => {
+        resetStrikeOutText();
         setViewPage('placingTwo');
         setPlacingShip(player.ships['carrier']);
     };
