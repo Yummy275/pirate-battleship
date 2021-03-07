@@ -4,7 +4,17 @@ import pirateSkullImg from '../images/skull.png';
 import scrollImg from '../images/home-scroll.png';
 import water from '../images/home-water.png';
 
-const HomePage = () => {
+const HomePage = ({ placingStart, setVsCpu }) => {
+    const onePlayerClick = () => {
+        setVsCpu(true);
+        placingStart();
+    };
+
+    const twoPlayerClick = () => {
+        setVsCpu(false);
+        placingStart();
+    };
+
     return (
         <div className="min-h-screen flex flex-col items-center">
             <div
@@ -24,8 +34,16 @@ const HomePage = () => {
                     src={pirateSkullImg}
                 ></img>
                 <div className="absolute flex flex-wrap justify-center items-center">
-                    <StdButton string="1 Player" textSize="text-xl"></StdButton>
-                    <StdButton string="2 Player" textSize="text-xl"></StdButton>
+                    <StdButton
+                        string="1 Player"
+                        textSize="text-xl"
+                        handleClick={onePlayerClick}
+                    ></StdButton>
+                    <StdButton
+                        string="2 Player"
+                        textSize="text-xl"
+                        handleClick={twoPlayerClick}
+                    ></StdButton>
                 </div>
             </div>
             <img

@@ -4,7 +4,9 @@ import StdButton from '../components/StdButton';
 import skull from '../images/skull.png';
 import scroll from '../images/home-scroll.png';
 
-const PlacingPage = ({ player }) => {
+const PlacingPage = ({ player, setViewPage, vsCpu = '' }) => {
+    console.log(player);
+
     const [placingShip, setPlacingShip] = useState(player.ships['carrier']);
     const [axis, setAxis] = useState('X');
 
@@ -44,13 +46,9 @@ const PlacingPage = ({ player }) => {
             player.placeMyShip(placingShip, cord, axis);
         } catch (err) {
             alert(err);
-            console.log(player.board.boardState);
-            console.log(player.ships);
             return;
         }
         updatePlacingShip();
-        console.log(player.board.boardState);
-        console.log(player.ships);
     };
 
     const xAxisHandleClick = () => {
@@ -60,6 +58,13 @@ const PlacingPage = ({ player }) => {
     const yAxisHandleClick = () => {
         setAxis('Y');
     };
+
+    const donePlacing = () => {
+        setViewPage('placingTwo');
+        setPlacingShip(player.ships['carrier']);
+    };
+
+    console.log(placingShip);
 
     return (
         <div
@@ -82,7 +87,22 @@ const PlacingPage = ({ player }) => {
                     gridSpotClick={gridSpotClick}
                 ></BoardGrid>
             </div>
-            <div className="flex justify-evenly text-red-700">
+            <div
+                className={`${
+                    placingShip === 'done' ? 'flex' : 'hidden'
+                } justify-center text-red-700`}
+            >
+                <StdButton
+                    textSize="text-xl"
+                    string="Ready"
+                    handleClick={donePlacing}
+                ></StdButton>
+            </div>
+            <div
+                className={`${
+                    placingShip !== 'done' ? 'flex' : 'hidden'
+                } justify-evenly text-red-700`}
+            >
                 <StdButton
                     textSize={`${axis === 'X' ? 'text-4xl' : 'text-xl'}`}
                     string="X"
