@@ -19,7 +19,8 @@ const BoardGrid = ({ boardState, gridSpotClick, hideOccupied = false }) => {
                         gridSpotClick(cord);
                     }}
                     className={`my-grid-border transition-colors ${
-                        boardState[i - 1][j - 1] === 'O'
+                        boardState[i - 1][j - 1] === 'O' &&
+                        hideOccupied === false
                             ? ''
                             : 'hover:bg-grid-hover-bgc'
                     } ${
