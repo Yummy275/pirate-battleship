@@ -68,7 +68,6 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
 
     const donePlacing = () => {
         resetStrikeOutText();
-        console.log(vsCpu);
         if (player.name === 'Player One' && vsCpu === true) {
             setViewPage('playing');
         } else if (player.name === 'Player Two') {
