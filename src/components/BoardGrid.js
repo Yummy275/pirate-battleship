@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BoardGrid = ({ boardState, gridSpotClick }) => {
+const BoardGrid = ({ boardState, gridSpotClick, hideOccupied = false }) => {
     const grid = [];
 
     for (var i = 1; i <= 8; i++) {
@@ -23,7 +23,8 @@ const BoardGrid = ({ boardState, gridSpotClick }) => {
                             ? ''
                             : 'hover:bg-grid-hover-bgc'
                     } ${
-                        boardState[i - 1][j - 1] === 'O'
+                        boardState[i - 1][j - 1] === 'O' &&
+                        hideOccupied === false
                             ? 'bg-grid-occ'
                             : boardState[i - 1][j - 1] === 'H'
                             ? 'bg-grid-hit'

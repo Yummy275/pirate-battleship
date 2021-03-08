@@ -34,6 +34,7 @@ const PlayingPage = ({ players, vsCpu }) => {
                 <BoardGrid
                     boardState={playerTwo.board.boardState}
                     gridSpotClick={playerOneAttacking}
+                    hideOccupied={true}
                 ></BoardGrid>
             </div>
         </div>
