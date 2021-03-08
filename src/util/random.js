@@ -11,17 +11,38 @@ const randomCordGen = () => {
     return [cordOne, cordTwo];
 };
 
-function randomAxis() {
+const randomAxis = () => {
     const ran = randomNumberGen(0, 1);
     if (ran === 0) {
         return 'X';
     } else if (ran === 1) {
         return 'Y';
     }
-}
+};
+
+const attackBoardRandomly = (attackingPlayer, targetPlayer) => {
+    //random cord
+    let cord = randomCordGen();
+    console.log(cord);
+    //indexes of random cord
+    let [cordOne, cordTwo] = cord;
+    console.log(cordOne);
+    console.log(cordTwo);
+    //makes sure cord is a legal spot to attack
+    //spot has to be 'O' or 'W'
+    while (
+        targetPlayer.board.boardState[cordOne - 1][cordTwo - 1] === 'H' ||
+        targetPlayer.board.boardState[cordOne - 1][cordTwo - 1] === 'M'
+    ) {
+        cord = randomCordGen();
+        [cordOne, cordTwo] = cord;
+    }
+    //use valid cord to attack enemy board
+    attackingPlayer.attackBoard(targetPlayer.board, cord);
+};
 
 const fillBoardRandomly = (player) => {
-    //ships body wont increase unless a succesful placement happens
+    //ships body defaults to '' so it only changes if successful placement
     //carrier
     while (player.ships['carrier'].body[0].cord === '') {
         try {
@@ -84,4 +105,9 @@ const fillBoardRandomly = (player) => {
     }
 };
 
-export default { randomNumberGen, randomCordGen, fillBoardRandomly };
+export default {
+    randomNumberGen,
+    randomCordGen,
+    fillBoardRandomly,
+    attackBoardRandomly,
+};
