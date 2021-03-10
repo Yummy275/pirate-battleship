@@ -23,11 +23,8 @@ const randomAxis = () => {
 const attackBoardRandomly = (attackingPlayer, targetPlayer) => {
     //random cord
     let cord = randomCordGen();
-    console.log(cord);
     //indexes of random cord
     let [cordOne, cordTwo] = cord;
-    console.log(cordOne);
-    console.log(cordTwo);
     //makes sure cord is a legal spot to attack
     //spot has to be 'O' or 'W'
     while (

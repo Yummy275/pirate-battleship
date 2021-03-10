@@ -7,15 +7,17 @@ import playerFactory from './game/player';
 
 function App() {
     const [viewPage, setViewPage] = useState('');
-    const [vsCpu, setVsCpu] = useState('');
+    const [vsCpu, setVsCpu] = useState(true);
     const [players, setPlayers] = useState([]);
 
     const placingStart = () => {
         const playerOne = playerFactory('Player One');
         const playerTwo = playerFactory('Player Two');
+        console.log(vsCpu);
         const playersObj = { playerOne: playerOne, playerTwo: playerTwo };
         setPlayers(playersObj);
         setViewPage('placing');
+        console.log(vsCpu);
     };
 
     return (

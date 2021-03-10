@@ -66,15 +66,17 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
         setAxis('Y');
     };
 
+    const resetShipPlacing = () => {
+        setPlacingShip(player.ships['carrier']);
+    };
+
     const donePlacing = () => {
         resetStrikeOutText();
-        if (player.name === 'Player One' && vsCpu === true) {
-            setViewPage('playing');
-        } else if (player.name === 'Player Two') {
-            setViewPage('playing');
-        } else {
+        resetShipPlacing();
+        if (player.name === 'Player One' && vsCpu === false) {
             setViewPage('placingTwo');
-            setPlacingShip(player.ships['carrier']);
+        } else {
+            setViewPage('playing');
         }
     };
 
