@@ -9,7 +9,6 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
     useEffect(() => {
         if (player.name === 'Player Two' && vsCpu === true) {
             rand.fillBoardRandomly(player);
-            console.log(player.board.boardState);
             setViewPage('playing');
         }
     });

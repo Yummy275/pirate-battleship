@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BoardGrid from '../components/BoardGrid';
 import rand from '../util/random';
 import skull from '../images/skull.png';
@@ -9,15 +9,14 @@ const PlayingPage = ({ players, vsCpu }) => {
     const playerOne = players.playerOne;
     const playerTwo = players.playerTwo;
 
-    console.log(playerOne.board.boardState);
-    console.log(playerTwo.board.boardState);
-
-    if (whosTurn === 2 && vsCpu === true) {
-        setTimeout(() => {
-            rand.attackBoardRandomly(playerTwo, playerOne);
-            setWhosTurn(1);
-        }, 5000);
-    }
+    useEffect(() => {
+        if (whosTurn === 2 && vsCpu === true) {
+            setTimeout(() => {
+                rand.attackBoardRandomly(playerTwo, playerOne);
+                setWhosTurn(1);
+            }, 4000);
+        }
+    });
 
     const playerOneAttacking = (cord) => {
         playerOne.attackBoard(playerTwo.board, cord);
@@ -26,6 +25,7 @@ const PlayingPage = ({ players, vsCpu }) => {
 
     const playerTwoAttacking = (cord) => {
         playerTwo.attackBoard(playerOne.board, cord);
+        setWhosTurn(1);
     };
 
     return (
