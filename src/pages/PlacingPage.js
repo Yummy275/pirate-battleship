@@ -1,10 +1,19 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import BoardGrid from '../components/BoardGrid';
 import StdButton from '../components/StdButton';
 import skull from '../images/skull.png';
 import scroll from '../images/home-scroll.png';
+import rand from '../util/random';
 
 const PlacingPage = ({ player, setViewPage, vsCpu }) => {
+    useEffect(() => {
+        if (player.name === 'Player Two' && vsCpu === true) {
+            rand.fillBoardRandomly(player);
+            console.log(player.board.boardState);
+            setViewPage('playing');
+        }
+    });
+
     const [placingShip, setPlacingShip] = useState(player.ships['carrier']);
     const [axis, setAxis] = useState('X');
 
@@ -73,11 +82,7 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
     const donePlacing = () => {
         resetStrikeOutText();
         resetShipPlacing();
-        if (player.name === 'Player One' && vsCpu === false) {
-            setViewPage('placingTwo');
-        } else {
-            setViewPage('playing');
-        }
+        setViewPage('placingTwo');
     };
 
     return (

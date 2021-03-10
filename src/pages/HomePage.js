@@ -3,16 +3,21 @@ import StdButton from '../components/StdButton';
 import pirateSkullImg from '../images/skull.png';
 import scrollImg from '../images/home-scroll.png';
 import water from '../images/home-water.png';
+import playerFactory from '../game/player';
 
 const HomePage = ({ placingStart, setVsCpu }) => {
     const onePlayerClick = () => {
         setVsCpu(true);
-        placingStart();
+        const playerOne = playerFactory('Player One');
+        const playerTwo = playerFactory('Player Two');
+        placingStart(playerOne, playerTwo);
     };
 
     const twoPlayerClick = () => {
         setVsCpu(false);
-        placingStart();
+        const playerOne = playerFactory('Player One');
+        const playerTwo = playerFactory('Player Two');
+        placingStart(playerOne, playerTwo);
     };
 
     return (

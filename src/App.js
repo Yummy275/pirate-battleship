@@ -7,17 +7,13 @@ import playerFactory from './game/player';
 
 function App() {
     const [viewPage, setViewPage] = useState('');
-    const [vsCpu, setVsCpu] = useState(true);
+    const [vsCpu, setVsCpu] = useState('');
     const [players, setPlayers] = useState([]);
 
-    const placingStart = () => {
-        const playerOne = playerFactory('Player One');
-        const playerTwo = playerFactory('Player Two');
-        console.log(vsCpu);
+    const placingStart = (playerOne, playerTwo) => {
         const playersObj = { playerOne: playerOne, playerTwo: playerTwo };
         setPlayers(playersObj);
         setViewPage('placing');
-        console.log(vsCpu);
     };
 
     return (
@@ -40,6 +36,7 @@ function App() {
                 <HomePage
                     placingStart={placingStart}
                     setVsCpu={setVsCpu}
+                    vsCpu={vsCpu}
                 ></HomePage>
             )}
         </div>
