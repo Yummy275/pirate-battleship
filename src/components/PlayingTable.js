@@ -9,18 +9,19 @@ const PlayingTable = ({
     whosTurn,
     viewingBoard,
 }) => {
+    console.log(viewingBoard);
     return (
         <>
             {viewingBoard === 1 ? (
                 <BoardGrid
-                    boardState={boardTwo}
-                    gridSpotClick={playerOneAttacking}
+                    boardState={boardOne}
+                    gridSpotClick={whosTurn === 1 ? 'none' : playerTwoAttacking}
                     hideOccupied={whosTurn === 1 ? false : true}
                 ></BoardGrid>
             ) : (
                 <BoardGrid
-                    boardState={boardOne}
-                    gridSpotClick={playerTwoAttacking}
+                    boardState={boardTwo}
+                    gridSpotClick={whosTurn === 2 ? 'none' : playerOneAttacking}
                     hideOccupied={whosTurn === 2 ? false : true}
                 ></BoardGrid>
             )}

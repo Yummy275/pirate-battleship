@@ -18,7 +18,9 @@ const PlayingPage = ({ players, vsCpu }) => {
     const playerOne = players.playerOne;
     const playerTwo = players.playerTwo;
 
+    console.log('p1');
     console.log(playerOne.board.boardState);
+    console.log('p2');
     console.log(playerTwo.board.boardState);
 
     useEffect(() => {
