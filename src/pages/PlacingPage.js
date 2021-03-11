@@ -120,7 +120,7 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
                     alt="scroll-img"
                     className="w-full h-36"
                 ></img>
-                <div className="absolute w-44 sm:w-64 text-sm sm:text-lg flex flex-wrap justify-around">
+                <div className={classes.shipNames}>
                     <PlacingShipsNames
                         player={player}
                         placingShip={placingShip}

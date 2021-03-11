@@ -3,6 +3,12 @@ import BoardGrid from '../components/BoardGrid';
 import rand from '../util/random';
 import skull from '../images/skull.png';
 
+const classes = {
+    container: `h-screen bg-center`,
+    header: `text-center text-red-700 text-3xl pb-1 bg-gray-300 bg-opacity-90`,
+    gridContainer: `h-4/6 w-5/6 mt-3 mx-auto bg-water-tile my-grid-border`,
+};
+
 const PlayingPage = ({ players, vsCpu }) => {
     const [whosTurn, setWhosTurn] = useState(1);
 
@@ -30,20 +36,20 @@ const PlayingPage = ({ players, vsCpu }) => {
 
     return (
         <div
-            className="h-screen bg-center"
+            className={classes.container}
             style={{
                 minHeight: '100vh',
                 backgroundImage: `url(${skull})`,
                 backgroundSize: '20%',
             }}
         >
-            <div className="text-center text-red-700 text-3xl pb-1 bg-gray-300 bg-opacity-90">
+            <div className={classes.header}>
                 {whosTurn === 1 ? playerOne.name : playerTwo.name} Choose Attack
                 Spot
             </div>
             <div
                 style={{ backgroundSize: '12.5% 12.5%', opacity: '.8' }}
-                className="h-4/6 w-5/6 mt-3 mx-auto bg-water-tile my-grid-border"
+                className={classes.gridContainer}
             >
                 {whosTurn === 1 ? (
                     <BoardGrid
