@@ -5,6 +5,16 @@ import scrollImg from '../images/home-scroll.png';
 import water from '../images/home-water.png';
 import playerFactory from '../game/player';
 
+const classes = {
+    container: `min-h-screen flex flex-col items-center`,
+    headerContainer: `w-full flex items-center justify-center relative`,
+    scrollImg: `h-40 w-full`,
+    title: `absolute text-2xl md:text-4xl text-red-700`,
+    buttonsContainerOuter: `w-full flex items-center justify-center relative`,
+    buttonsContainerInner: `absolute flex flex-wrap justify-center items-center`,
+    waterImg: `fixed bottom-0 w-full h-1/5`,
+};
+
 const HomePage = ({ placingStart, setVsCpu }) => {
     const onePlayerClick = () => {
         setVsCpu(true);
@@ -21,24 +31,26 @@ const HomePage = ({ placingStart, setVsCpu }) => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center">
+        <div className={classes.container}>
             <div
+                className={classes.headerContainer}
                 style={{ maxWidth: '40rem' }}
-                className="w-full flex items-center justify-center relative"
             >
-                <img alt="scroll" src={scrollImg} className="h-40 w-full"></img>
-                <div className="absolute text-2xl md:text-4xl text-red-700">
-                    PIRATESHIPS
-                </div>
+                <img
+                    className={classes.scrollImg}
+                    alt="scroll"
+                    src={scrollImg}
+                ></img>
+                <div className={classes.title}>PIRATESHIPS</div>
             </div>
-            <div className="w-full flex items-center justify-center relative">
+            <div className={classes.buttonsContainerOuter}>
                 <img
                     alt="skull"
                     style={{ maxWidth: '30rem' }}
                     className="w-full"
                     src={pirateSkullImg}
                 ></img>
-                <div className="absolute flex flex-wrap justify-center items-center">
+                <div className={classes.buttonsContainerInner}>
                     <StdButton
                         string="1 Player"
                         textSize="text-xl"
@@ -53,7 +65,7 @@ const HomePage = ({ placingStart, setVsCpu }) => {
             </div>
             <img
                 style={{ maxHeight: '5rem' }}
-                className="fixed bottom-0 w-full h-1/5"
+                className={classes.waterImg}
                 src={water}
                 alt="water"
             ></img>
