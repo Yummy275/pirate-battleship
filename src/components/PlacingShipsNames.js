@@ -20,6 +20,7 @@ const PlacingShipsNames = ({ placingShip }) => {
         shipNameFour.current.style.textDecoration = 'none';
         shipNameFive.current.style.textDecoration = 'none';
     };
+
     useEffect(() => {
         if (placingShip.name === 'Battleship') {
             shipNameOne.current.style.textDecoration = 'line-through';

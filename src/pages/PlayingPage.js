@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BoardGrid from '../components/BoardGrid';
+import StdButton from '../components/StdButton';
 import rand from '../util/random';
 import skull from '../images/skull.png';
 
@@ -26,12 +27,18 @@ const PlayingPage = ({ players, vsCpu }) => {
 
     const playerOneAttacking = (cord) => {
         playerOne.attackBoard(playerTwo.board, cord);
-        setWhosTurn(2);
     };
 
     const playerTwoAttacking = (cord) => {
         playerTwo.attackBoard(playerOne.board, cord);
-        setWhosTurn(1);
+    };
+
+    const nextTurn = () => {
+        if (whosTurn === 1) {
+            setWhosTurn(2);
+        } else if (whosTurn === 2) {
+            setWhosTurn(1);
+        }
     };
 
     return (
@@ -64,6 +71,13 @@ const PlayingPage = ({ players, vsCpu }) => {
                         hideOccupied={true}
                     ></BoardGrid>
                 )}
+            </div>
+            <div>
+                <StdButton
+                    string="Ready"
+                    textSize="text-xl"
+                    handleClick={nextTurn}
+                ></StdButton>
             </div>
         </div>
     );
