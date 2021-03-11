@@ -71,7 +71,11 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
 
     const donePlacing = () => {
         resetShipPlacing();
-        setViewPage('placingTwo');
+        if (player.name === 'Player Two') {
+            setViewPage('playing');
+        } else {
+            setViewPage('placingTwo');
+        }
     };
 
     return (

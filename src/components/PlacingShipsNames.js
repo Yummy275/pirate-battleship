@@ -22,7 +22,9 @@ const PlacingShipsNames = ({ placingShip }) => {
     };
 
     useEffect(() => {
-        if (placingShip.name === 'Battleship') {
+        if (placingShip.name === 'Carrier') {
+            resetStrikeOutText();
+        } else if (placingShip.name === 'Battleship') {
             shipNameOne.current.style.textDecoration = 'line-through';
         } else if (placingShip.name === 'Cruiser') {
             shipNameTwo.current.style.textDecoration = 'line-through';
@@ -33,12 +35,6 @@ const PlacingShipsNames = ({ placingShip }) => {
         } else if (placingShip === 'done') {
             shipNameFive.current.style.textDecoration = 'line-through';
         }
-
-        return () => {
-            if (placingShip === 'done') {
-                resetStrikeOutText();
-            }
-        };
     });
 
     return (
