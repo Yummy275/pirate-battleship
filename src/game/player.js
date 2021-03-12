@@ -37,18 +37,19 @@ const playerFactory = (name) => {
     };
 
     const shipsDeadCheck = () => {
-        let theyAllDead = false;
-        console.log(ships['carrier']);
-        if (
-            ships['carrier'].checkForDeath() === true &&
-            ships['battleship'].checkForDeath() === true &&
-            ships['cruiser'].checkForDeath() === true &&
-            ships['submarine'].checkForDeath() === true &&
-            ships['destroyer'].checkForDeath() === true
-        ) {
-            theyAllDead = true;
+        let theyAllDead = true;
+        const shipNames = [
+            'carrier',
+            'battleship',
+            'cruiser',
+            'submarine',
+            'destroyer',
+        ];
+        for (var i = 0; i < shipNames.length; i++) {
+            if (ships[shipNames[i]].checkForDeath() === false) {
+                theyAllDead = false;
+            }
         }
-        console.log(theyAllDead);
         return theyAllDead;
     };
 

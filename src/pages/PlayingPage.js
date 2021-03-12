@@ -47,6 +47,16 @@ const PlayingPage = ({ players, vsCpu }) => {
         }, time);
     };
 
+    const checkForShipsDead = (player) => {
+        if (player.shipsDeadCheck() === true) {
+            if (player.name === `Player One`) {
+                setWinner('Player Two');
+            } else if (player.name === 'Player Two') {
+                setWinner('Player One');
+            }
+        }
+    };
+
     useEffect(() => {
         if (whosTurn === 2 && vsCpu === true) {
             const time = 2300;
@@ -61,7 +71,9 @@ const PlayingPage = ({ players, vsCpu }) => {
 
     const playerOneAttacking = (cord) => {
         playerOne.attackBoard(playerTwo.board, cord);
-        playerTwo.shipsDeadCheck();
+        if (checkForShipsDead(playerTwo) === true) {
+            console.log('HELLO!');
+        }
         setViewBoard(1);
         setWhosTurn(2);
     };

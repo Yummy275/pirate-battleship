@@ -14,7 +14,6 @@ const shipFactory = (name, length) => {
                 break;
             }
         }
-        console.log(isDead);
         return isDead;
     };
 
