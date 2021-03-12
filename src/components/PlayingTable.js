@@ -9,7 +9,6 @@ const PlayingTable = ({
     whosTurn,
     viewingBoard,
 }) => {
-    console.log(viewingBoard);
     return (
         <>
             {viewingBoard === 1 ? (

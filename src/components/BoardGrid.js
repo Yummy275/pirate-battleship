@@ -10,6 +10,7 @@ const BoardGrid = ({ boardState, gridSpotClick, hideOccupied = false }) => {
             const col = (
                 <div
                     key={cord}
+                    id={`${cord}`}
                     style={{
                         cursor: 'pointer',
                         height: '100%',
@@ -18,7 +19,7 @@ const BoardGrid = ({ boardState, gridSpotClick, hideOccupied = false }) => {
                     onClick={() => {
                         gridSpotClick(cord);
                     }}
-                    className={`my-grid-border transition-colors ${
+                    className={`my-grid-border grid-spot transition-colors ${
                         boardState[i - 1][j - 1] === 'O' &&
                         hideOccupied === false
                             ? ''

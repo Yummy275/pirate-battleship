@@ -18,17 +18,34 @@ const PlayingPage = ({ players, vsCpu }) => {
     const playerOne = players.playerOne;
     const playerTwo = players.playerTwo;
 
-    console.log('p1');
-    console.log(playerOne.board.boardState);
-    console.log('p2');
-    console.log(playerTwo.board.boardState);
+    const highlightRandom = (time) => {
+        const gridSpots = Array.from(document.querySelectorAll('.grid-spot'));
+        let lastRand = 0;
+        let randNum = 0;
+        const adding = setInterval(() => {
+            lastRand = randNum;
+            randNum = rand.randomNumberGen(0, 63);
+            gridSpots[randNum].classList.add('grid-random-highlight');
+        }, 200);
+        const removing = setInterval(() => {
+            gridSpots[lastRand].classList.remove('grid-random-highlight');
+        }, 200);
+        setTimeout(() => {
+            gridSpots[randNum].classList.remove('grid-random-highlight');
+            clearInterval(removing);
+            clearInterval(adding);
+        }, time);
+    };
 
     useEffect(() => {
         if (whosTurn === 2 && vsCpu === true) {
+            const time = 2500;
+            highlightRandom(time);
             setTimeout(() => {
                 rand.attackBoardRandomly(playerTwo, playerOne);
                 setWhosTurn(1);
-            }, 4000);
+                setViewBoard(2);
+            }, time);
         }
     });
 
@@ -60,6 +77,8 @@ const PlayingPage = ({ players, vsCpu }) => {
             <div className={classes.header}>
                 {viewingBoard === whosTurn
                     ? `Your board`
+                    : whosTurn === 2 && vsCpu === true
+                    ? `CPU attacking`
                     : whosTurn === 2 && viewingBoard === 1
                     ? `Player Two Pick Attack Cord`
                     : whosTurn === 1 && viewingBoard === 2
