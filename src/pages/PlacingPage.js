@@ -23,6 +23,9 @@ const classes = {
 };
 
 const PlacingPage = ({ player, setViewPage, vsCpu }) => {
+    const [placingShip, setPlacingShip] = useState(player.ships['carrier']);
+    const [axis, setAxis] = useState('X');
+
     useEffect(() => {
         if (player.name === 'Player Two' && vsCpu === true) {
             rand.fillBoardRandomly(player);
@@ -30,8 +33,12 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
         }
     });
 
-    const [placingShip, setPlacingShip] = useState(player.ships['carrier']);
-    const [axis, setAxis] = useState('X');
+    useEffect(() => {
+        if (player.name === 'Player Two') {
+            console.log('i happened');
+            setPlacingShip(player.ships['carrier']);
+        }
+    }, [player]);
 
     const updatePlacingShip = () => {
         if (placingShip.name === 'Carrier') {
@@ -44,15 +51,18 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
             setPlacingShip(player.ships['destroyer']);
         } else if (placingShip.name === 'Destroyer') {
             setPlacingShip('done');
+        } else if (placingShip === 'done') {
+            setPlacingShip(player.ships['carrier']);
         }
     };
 
     const gridSpotClick = (cord) => {
         try {
+            console.log(placingShip);
+            console.log(player);
             player.placeMyShip(placingShip, cord, axis);
         } catch (err) {
             alert(err);
-            return;
         }
         updatePlacingShip();
     };
@@ -65,16 +75,13 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
         setAxis('Y');
     };
 
-    const resetShipPlacing = () => {
-        setPlacingShip(player.ships['carrier']);
-    };
-
     const donePlacing = () => {
-        resetShipPlacing();
         if (player.name === 'Player Two') {
             setViewPage('playing');
+            updatePlacingShip();
         } else {
             setViewPage('placingTwo');
+            updatePlacingShip();
         }
     };
 
@@ -87,7 +94,7 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
                 backgroundSize: '20%',
             }}
         >
-            <div className={classes.headerBar}>{player.name} Ships</div>
+            <div className={classes.headerBar}>{player.name} Place Ships</div>
             <div
                 style={{ backgroundSize: '12.5% 12.5%', opacity: '.8' }}
                 className={classes.boardGridContainer}

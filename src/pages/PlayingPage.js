@@ -20,6 +20,9 @@ const PlayingPage = ({ players, vsCpu }) => {
     const playerOne = players.playerOne;
     const playerTwo = players.playerTwo;
 
+    console.log(playerOne);
+    console.log(playerTwo);
+
     const highlightRandom = (time) => {
         const gridSpots = Array.from(document.querySelectorAll('.grid-spot'));
 
