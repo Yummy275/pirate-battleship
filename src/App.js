@@ -3,7 +3,6 @@ import './App.css';
 import HomePage from './pages/HomePage';
 import PlacingPage from './pages/PlacingPage';
 import PlayingPage from './pages/PlayingPage';
-import playerFactory from './game/player';
 
 function App() {
     const [viewPage, setViewPage] = useState('');

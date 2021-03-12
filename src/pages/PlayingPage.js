@@ -20,6 +20,11 @@ const PlayingPage = ({ players, vsCpu }) => {
 
     const highlightRandom = (time) => {
         const gridSpots = Array.from(document.querySelectorAll('.grid-spot'));
+
+        for (const spot of gridSpots) {
+            spot.style.pointerEvents = 'none';
+        }
+
         let lastRand = 0;
         let randNum = 0;
         const adding = setInterval(() => {
@@ -31,6 +36,9 @@ const PlayingPage = ({ players, vsCpu }) => {
             gridSpots[lastRand].classList.remove('grid-random-highlight');
         }, 150);
         setTimeout(() => {
+            for (const spot of gridSpots) {
+                spot.style.pointerEvents = 'auto';
+            }
             gridSpots[randNum].classList.remove('grid-random-highlight');
             clearInterval(removing);
             clearInterval(adding);
@@ -39,13 +47,10 @@ const PlayingPage = ({ players, vsCpu }) => {
 
     useEffect(() => {
         if (whosTurn === 2 && vsCpu === true) {
-            const body = document.querySelector('body');
-            body.style.pointerEvents = 'none';
             const time = 2300;
             highlightRandom(time);
             setTimeout(() => {
                 rand.attackBoardRandomly(playerTwo, playerOne);
-                body.style.pointerEvents = 'auto';
                 setWhosTurn(1);
                 setViewBoard(2);
             }, time);
