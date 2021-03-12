@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PlayingTable from '../components/PlayingTable';
+import WinnerBoard from '../components/WinnerBoard';
 import StdButton from '../components/StdButton';
 import rand from '../util/random';
 import skull from '../images/skull.png';
@@ -14,6 +15,7 @@ const classes = {
 const PlayingPage = ({ players, vsCpu }) => {
     const [whosTurn, setWhosTurn] = useState(1);
     const [viewingBoard, setViewBoard] = useState(2);
+    const [winner, setWinner] = useState('');
 
     const playerOne = players.playerOne;
     const playerTwo = players.playerTwo;
@@ -59,6 +61,7 @@ const PlayingPage = ({ players, vsCpu }) => {
 
     const playerOneAttacking = (cord) => {
         playerOne.attackBoard(playerTwo.board, cord);
+        playerTwo.shipsDeadCheck();
         setViewBoard(1);
         setWhosTurn(2);
     };
@@ -93,7 +96,6 @@ const PlayingPage = ({ players, vsCpu }) => {
                     ? 'Player One Pick Attack Cord'
                     : ''}
             </div>
-            <div></div>
             <div
                 style={{ backgroundSize: '12.5% 12.5%', opacity: '.8' }}
                 className={classes.gridContainer}
