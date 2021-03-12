@@ -13,6 +13,11 @@ const PlayingTable = ({
         <>
             {viewingBoard === 1 ? (
                 <BoardGrid
+                    className={
+                        whosTurn === viewingBoard
+                            ? 'pointer-events-none'
+                            : 'pointer-events-auto'
+                    }
                     boardState={boardOne}
                     gridSpotClick={whosTurn === 1 ? 'none' : playerTwoAttacking}
                     hideOccupied={whosTurn === 1 ? false : true}

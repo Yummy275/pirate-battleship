@@ -5,7 +5,7 @@ const StdButton = ({ string, textSize, handleClick }) => {
         <button
             style={{ transition: 'font-size .2s ease' }}
             onClick={handleClick}
-            className={`w-36 h-16 ${textSize} p-2 mx-4 my-2 bg-red-200 rounded`}
+            className={`w-36 h-16 ${textSize} p-2 mx-4 my-2 bg-red-200 rounded border border-black`}
         >
             {string}
         </button>

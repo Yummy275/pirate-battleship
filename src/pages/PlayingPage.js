@@ -26,10 +26,10 @@ const PlayingPage = ({ players, vsCpu }) => {
             lastRand = randNum;
             randNum = rand.randomNumberGen(0, 63);
             gridSpots[randNum].classList.add('grid-random-highlight');
-        }, 200);
+        }, 150);
         const removing = setInterval(() => {
             gridSpots[lastRand].classList.remove('grid-random-highlight');
-        }, 200);
+        }, 150);
         setTimeout(() => {
             gridSpots[randNum].classList.remove('grid-random-highlight');
             clearInterval(removing);
@@ -39,10 +39,13 @@ const PlayingPage = ({ players, vsCpu }) => {
 
     useEffect(() => {
         if (whosTurn === 2 && vsCpu === true) {
-            const time = 2500;
+            const body = document.querySelector('body');
+            body.style.pointerEvents = 'none';
+            const time = 2300;
             highlightRandom(time);
             setTimeout(() => {
                 rand.attackBoardRandomly(playerTwo, playerOne);
+                body.style.pointerEvents = 'auto';
                 setWhosTurn(1);
                 setViewBoard(2);
             }, time);
@@ -95,6 +98,7 @@ const PlayingPage = ({ players, vsCpu }) => {
                     playerOneAttacking={playerOneAttacking}
                     boardTwo={playerTwo.board.boardState}
                     playerTwoAttacking={playerTwoAttacking}
+                    whosTurn={whosTurn}
                     viewingBoard={viewingBoard}
                 ></PlayingTable>
             </div>

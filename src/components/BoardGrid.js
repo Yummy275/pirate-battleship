@@ -19,7 +19,11 @@ const BoardGrid = ({ boardState, gridSpotClick, hideOccupied = false }) => {
                     onClick={() => {
                         gridSpotClick(cord);
                     }}
-                    className={`my-grid-border grid-spot transition-colors ${
+                    className={`${
+                        gridSpotClick === 'none'
+                            ? `pointer-events-none`
+                            : 'pointer-events-auto'
+                    } my-grid-border grid-spot transition-colors ${
                         boardState[i - 1][j - 1] === 'O' &&
                         hideOccupied === false
                             ? ''
