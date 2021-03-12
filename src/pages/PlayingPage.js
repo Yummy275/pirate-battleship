@@ -52,11 +52,9 @@ const PlayingPage = ({ players, vsCpu }) => {
 
     const checkForShipsDead = (player) => {
         if (player.shipsDeadCheck() === true) {
-            if (player.name === `Player One`) {
-                setWinner('Player Two');
-            } else if (player.name === 'Player Two') {
-                setWinner('Player One');
-            }
+            return true;
+        } else {
+            return false;
         }
     };
 
@@ -83,6 +81,9 @@ const PlayingPage = ({ players, vsCpu }) => {
 
     const playerTwoAttacking = (cord) => {
         playerTwo.attack(playerOne, cord);
+        if (checkForShipsDead(playerTwo) === true) {
+            console.log('HELLO!');
+        }
         setViewBoard(2);
         setWhosTurn(1);
     };
