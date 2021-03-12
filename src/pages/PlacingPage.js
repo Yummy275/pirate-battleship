@@ -35,7 +35,6 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
 
     useEffect(() => {
         if (player.name === 'Player Two') {
-            console.log('i happened');
             setPlacingShip(player.ships['carrier']);
         }
     }, [player]);
@@ -58,8 +57,6 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
 
     const gridSpotClick = (cord) => {
         try {
-            console.log(placingShip);
-            console.log(player);
             player.placeMyShip(placingShip, cord, axis);
         } catch (err) {
             alert(err);

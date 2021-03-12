@@ -27,11 +27,13 @@ const playerFactory = (name) => {
         }
     };
 
-    const shipHitCheck = (ship, cord) => {
-        for (const bodyPart of ship.body) {
-            if (JSON.stringify(bodyPart.cord) === JSON.stringify(cord)) {
-                bodyPart.hitMarker = true;
-                break;
+    const shipsHitCheck = (cord) => {
+        for (const ship in ships) {
+            for (const bodyPart of ships[ship].body) {
+                if (JSON.stringify(bodyPart.cord) === JSON.stringify(cord)) {
+                    bodyPart.hitMarker = true;
+                    break;
+                }
             }
         }
     };
@@ -48,15 +50,15 @@ const playerFactory = (name) => {
         for (var i = 0; i < shipNames.length; i++) {
             if (ships[shipNames[i]].checkForDeath() === false) {
                 theyAllDead = false;
+                break;
             }
         }
         return theyAllDead;
     };
 
-    const attackBoard = (targetBoard, cord) => {
-        targetBoard.recieveAttack(cord);
-        //marks ship in ships as hit if located at target cord
-        shipHitCheck(ships['carrier'], cord);
+    const attack = (targetPlayer, cord) => {
+        targetPlayer.board.recieveAttack(cord);
+        targetPlayer.shipsHitCheck(cord);
     };
 
     const player = {
@@ -64,7 +66,8 @@ const playerFactory = (name) => {
         board: board,
         ships: ships,
         placeMyShip,
-        attackBoard,
+        attack,
+        shipsHitCheck,
         shipsDeadCheck,
     };
 

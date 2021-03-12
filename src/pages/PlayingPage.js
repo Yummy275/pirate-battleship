@@ -73,7 +73,7 @@ const PlayingPage = ({ players, vsCpu }) => {
     });
 
     const playerOneAttacking = (cord) => {
-        playerOne.attackBoard(playerTwo.board, cord);
+        playerOne.attack(playerTwo, cord);
         if (checkForShipsDead(playerTwo) === true) {
             console.log('HELLO!');
         }
@@ -82,7 +82,7 @@ const PlayingPage = ({ players, vsCpu }) => {
     };
 
     const playerTwoAttacking = (cord) => {
-        playerTwo.attackBoard(playerOne.board, cord);
+        playerTwo.attack(playerOne, cord);
         setViewBoard(2);
         setWhosTurn(1);
     };
