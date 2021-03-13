@@ -12,7 +12,7 @@ const classes = {
     btnsContainer: 'flex justify-center',
 };
 
-const PlayingPage = ({ players, vsCpu }) => {
+const PlayingPage = ({ players, vsCpu, setViewPage }) => {
     const [whosTurn, setWhosTurn] = useState(1);
     const [viewingBoard, setViewBoard] = useState(2);
     const [winner, setWinner] = useState('');
@@ -20,8 +20,7 @@ const PlayingPage = ({ players, vsCpu }) => {
     const playerOne = players.playerOne;
     const playerTwo = players.playerTwo;
 
-    console.log(playerOne);
-    console.log(playerTwo);
+    console.log(winner);
 
     const highlightRandom = (time) => {
         const gridSpots = Array.from(document.querySelectorAll('.grid-spot'));
@@ -65,7 +64,7 @@ const PlayingPage = ({ players, vsCpu }) => {
     const playerOneAttacking = (cord) => {
         playerOne.attack(playerTwo, cord);
         if (playerTwo.shipsDeadCheck() === true) {
-            console.log('hello');
+            setWinner('Player One');
         }
         setViewBoard(1);
         setWhosTurn(2);
@@ -74,7 +73,7 @@ const PlayingPage = ({ players, vsCpu }) => {
     const playerTwoAttacking = (cord) => {
         playerTwo.attack(playerOne, cord);
         if (playerOne.shipsDeadCheck() === true) {
-            console.log('hello');
+            setWinner('Player Two');
         }
         setViewBoard(2);
         setWhosTurn(1);
@@ -94,7 +93,9 @@ const PlayingPage = ({ players, vsCpu }) => {
             }}
         >
             <div className={classes.header}>
-                {viewingBoard === whosTurn
+                {winner !== ''
+                    ? "It's Over!"
+                    : viewingBoard === whosTurn
                     ? `Your board`
                     : whosTurn === 2 && vsCpu === true
                     ? `CPU attacking`
@@ -108,14 +109,21 @@ const PlayingPage = ({ players, vsCpu }) => {
                 style={{ backgroundSize: '12.5% 12.5%', opacity: '.8' }}
                 className={classes.gridContainer}
             >
-                <PlayingTable
-                    boardOne={playerOne.board.boardState}
-                    playerOneAttacking={playerOneAttacking}
-                    boardTwo={playerTwo.board.boardState}
-                    playerTwoAttacking={playerTwoAttacking}
-                    whosTurn={whosTurn}
-                    viewingBoard={viewingBoard}
-                ></PlayingTable>
+                {winner === '' ? (
+                    <PlayingTable
+                        boardOne={playerOne.board.boardState}
+                        playerOneAttacking={playerOneAttacking}
+                        boardTwo={playerTwo.board.boardState}
+                        playerTwoAttacking={playerTwoAttacking}
+                        whosTurn={whosTurn}
+                        viewingBoard={viewingBoard}
+                    ></PlayingTable>
+                ) : (
+                    <WinnerBoard
+                        winnerName={winner}
+                        setViewPage={setViewPage}
+                    ></WinnerBoard>
+                )}
             </div>
             <div className={classes.btnsContainer}>
                 <StdButton

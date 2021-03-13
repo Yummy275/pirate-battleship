@@ -35,7 +35,7 @@ const attackBoardRandomly = (attackingPlayer, targetPlayer) => {
         [cordOne, cordTwo] = cord;
     }
     //use valid cord to attack enemy board
-    attackingPlayer.attackBoard(targetPlayer.board, cord);
+    attackingPlayer.attack(targetPlayer, cord);
 };
 
 const fillBoardRandomly = (player) => {
@@ -102,9 +102,11 @@ const fillBoardRandomly = (player) => {
     }
 };
 
-export default {
+const rand = {
     randomNumberGen,
     randomCordGen,
     fillBoardRandomly,
     attackBoardRandomly,
 };
+
+export default rand;

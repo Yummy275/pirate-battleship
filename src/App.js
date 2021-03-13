@@ -30,7 +30,11 @@ function App() {
                     vsCpu={vsCpu}
                 ></PlacingPage>
             ) : viewPage === 'playing' ? (
-                <PlayingPage players={players} vsCpu={vsCpu}></PlayingPage>
+                <PlayingPage
+                    players={players}
+                    vsCpu={vsCpu}
+                    setViewPage={setViewPage}
+                ></PlayingPage>
             ) : (
                 <HomePage
                     placingStart={placingStart}
