@@ -48,7 +48,6 @@ const playerFactory = (name) => {
             'destroyer',
         ];
         for (var i = 0; i < shipNames.length; i++) {
-            console.log(i);
             if (ships[shipNames[i]].checkForDeath() === false) {
                 theyAllDead = false;
                 break;

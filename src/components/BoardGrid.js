@@ -2,7 +2,6 @@ import React from 'react';
 
 const BoardGrid = ({ boardState, gridSpotClick, hideOccupied = false }) => {
     const grid = [];
-
     for (var i = 1; i <= 8; i++) {
         const row = [];
         for (var j = 1; j <= 8; j++) {
@@ -17,12 +16,20 @@ const BoardGrid = ({ boardState, gridSpotClick, hideOccupied = false }) => {
                         width: '12.5%',
                     }}
                     onClick={() => {
-                        gridSpotClick(cord);
+                        //Not sure why but when vsCpu, the pointer events aren't turned off?
+                        try {
+                            gridSpotClick(cord);
+                        } catch (err) {
+                            alert(
+                                'For some reason clicking on your own board doesnt get disabled against cpus lol. Go attack the opponents board!'
+                            );
+                            return;
+                        }
                     }}
                     className={`${
                         gridSpotClick === 'none'
                             ? `pointer-events-none`
-                            : 'pointer-events-auto'
+                            : `pointer-events-auto`
                     } my-grid-border grid-spot transition-colors ${
                         boardState[i - 1][j - 1] === 'O' &&
                         hideOccupied === false

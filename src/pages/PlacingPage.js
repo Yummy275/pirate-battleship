@@ -7,9 +7,9 @@ import scroll from '../images/home-scroll.png';
 import rand from '../util/random';
 
 const classes = {
-    container: `h-screen bg-center`,
+    container: `bg-center`,
     headerBar: `text-center text-red-700 text-3xl pb-1 bg-gray-300 bg-opacity-90`,
-    boardGridContainer: `h-4/6 w-5/6 mt-3 mx-auto bg-water-tile my-grid-border`,
+    boardGridContainer: `w-5/6 mt-3 mx-auto bg-water-tile my-grid-border`,
     doneButton: (placingShip) =>
         `${
             placingShip === 'done' ? 'flex' : 'hidden'
@@ -60,6 +60,7 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
             player.placeMyShip(placingShip, cord, axis);
         } catch (err) {
             alert(err);
+            return;
         }
         updatePlacingShip();
     };
@@ -93,12 +94,18 @@ const PlacingPage = ({ player, setViewPage, vsCpu }) => {
         >
             <div className={classes.headerBar}>{player.name} Place Ships</div>
             <div
-                style={{ backgroundSize: '12.5% 12.5%', opacity: '.8' }}
+                style={{
+                    height: '60vh',
+                    backgroundSize: '12.5% 12.5%',
+                    opacity: '.8',
+                }}
                 className={classes.boardGridContainer}
             >
                 <BoardGrid
                     boardState={player.board.boardState}
-                    gridSpotClick={gridSpotClick}
+                    gridSpotClick={
+                        placingShip === 'done' ? 'none' : gridSpotClick
+                    }
                 ></BoardGrid>
             </div>
             <div className={classes.doneButton(placingShip)}>

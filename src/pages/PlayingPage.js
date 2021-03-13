@@ -6,9 +6,9 @@ import rand from '../util/random';
 import skull from '../images/skull.png';
 
 const classes = {
-    container: `h-screen bg-center`,
+    container: `bg-center`,
     header: `text-center text-red-700 text-3xl pb-1 bg-gray-300 bg-opacity-90`,
-    gridContainer: `h-4/6 w-5/6 mt-3 mx-auto bg-water-tile my-grid-border`,
+    gridContainer: `w-5/6 mt-3 mx-auto bg-water-tile my-grid-border`,
     btnsContainer: 'flex justify-center',
 };
 
@@ -19,8 +19,6 @@ const PlayingPage = ({ players, vsCpu, setViewPage }) => {
 
     const playerOne = players.playerOne;
     const playerTwo = players.playerTwo;
-
-    console.log(winner);
 
     const highlightRandom = (time) => {
         const gridSpots = Array.from(document.querySelectorAll('.grid-spot'));
@@ -46,7 +44,7 @@ const PlayingPage = ({ players, vsCpu, setViewPage }) => {
             gridSpots[randNum].classList.remove('grid-random-highlight');
             clearInterval(removing);
             clearInterval(adding);
-        }, time);
+        }, time - 100);
     };
 
     useEffect(() => {
@@ -62,7 +60,13 @@ const PlayingPage = ({ players, vsCpu, setViewPage }) => {
     });
 
     const playerOneAttacking = (cord) => {
-        playerOne.attack(playerTwo, cord);
+        try {
+            playerOne.attack(playerTwo, cord);
+        } catch (err) {
+            alert(err);
+            return;
+        }
+
         if (playerTwo.shipsDeadCheck() === true) {
             setWinner('Player One');
         }
@@ -71,7 +75,13 @@ const PlayingPage = ({ players, vsCpu, setViewPage }) => {
     };
 
     const playerTwoAttacking = (cord) => {
-        playerTwo.attack(playerOne, cord);
+        try {
+            playerTwo.attack(playerOne, cord);
+        } catch (err) {
+            alert(err);
+            return;
+        }
+
         if (playerOne.shipsDeadCheck() === true) {
             setWinner('Player Two');
         }
@@ -106,7 +116,11 @@ const PlayingPage = ({ players, vsCpu, setViewPage }) => {
                     : ''}
             </div>
             <div
-                style={{ backgroundSize: '12.5% 12.5%', opacity: '.8' }}
+                style={{
+                    height: '60vh',
+                    backgroundSize: '12.5% 12.5%',
+                    opacity: '.8',
+                }}
                 className={classes.gridContainer}
             >
                 {winner === '' ? (
@@ -126,11 +140,15 @@ const PlayingPage = ({ players, vsCpu, setViewPage }) => {
                 )}
             </div>
             <div className={classes.btnsContainer}>
-                <StdButton
-                    string="Toggle View"
-                    textSize="text-base"
-                    handleClick={toggleView}
-                ></StdButton>
+                {whosTurn === 2 && vsCpu === true ? (
+                    ''
+                ) : (
+                    <StdButton
+                        string="Toggle View"
+                        textSize="text-base"
+                        handleClick={toggleView}
+                    ></StdButton>
+                )}
             </div>
         </div>
     );
